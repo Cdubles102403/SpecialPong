@@ -52,7 +52,7 @@ public class World extends JPanel {
             player.update();
             pu.update();
             ball.move();
-            
+            //bounce if ball touches paddles
             if(player.getBounds().intersects(ball.getBounds())){
             ball.bounce();
             }
@@ -61,9 +61,11 @@ public class World extends JPanel {
             }
             
             ball.update();
+            
+            
             }
     }
-
+//keyboard events
     public void keyPressed(KeyEvent e) {
 
          if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -77,7 +79,7 @@ public class World extends JPanel {
             System.out.println("down");
         }
     }
-
+//release events
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             player.stop();

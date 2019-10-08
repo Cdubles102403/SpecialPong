@@ -13,7 +13,6 @@ public class Ball {
    private int width, x, y, vy,vx;
    private Rectangle bounds;
    private Color color;
-   private final int speed = 5;
     
     public Ball(int cWidth, int cHeight){
        this.x = cWidth/2;
@@ -31,13 +30,16 @@ public class Ball {
        g2d.fillOval(x,y,width,width);  
     }
     public void update(){
-        this.x +=vx;
-       this.y +=vy;
+        this.x += vx;
+       this.y += vy;
        this.bounds = new Rectangle(this.x, this.y, this.width, this.width);
     }
     public void bounce(){
+    double ran1 = Math.random();
+    double ran2 = Math.random();
     this.vx = -this.vx;
     this.vy = -this.vy;
+    
     move();
     move();
     move();
