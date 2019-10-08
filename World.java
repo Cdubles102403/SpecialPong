@@ -19,7 +19,9 @@ import java.util.TimerTask;
 public class World extends JPanel {
     private Player player;
     private Enemy enemy;
+    private Ball ball;
     private Timer timer;
+    private PowerUp pu;
 
     public World() {
         super();
@@ -27,6 +29,8 @@ public class World extends JPanel {
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 1000/50);
         player = new Player(800,600);
         enemy = new Enemy(800,600);
+        ball = new Ball(800,600);
+        pu = new PowerUp(800,600);
     }
 
     @Override
@@ -35,6 +39,8 @@ public class World extends JPanel {
         this.setBackground(Color.BLACK);
         player.draw(g);
         enemy.draw(g);
+        ball.draw(g);
+        pu.draw(g);
     }
 
     private class ScheduleTask extends TimerTask {
@@ -44,20 +50,30 @@ public class World extends JPanel {
             repaint();
             enemy.update();
             player.update();
+            pu.update();
+            ball.move();
             
-        }
+            if(player.getBounds().intersects(ball.getBounds())){
+            ball.bounce();
+            }
+            if(enemy.getBounds().intersects(ball.getBounds())){
+            ball.bounce();
+            }
+            
+            ball.update();
+            }
     }
 
     public void keyPressed(KeyEvent e) {
 
          if (e.getKeyCode() == KeyEvent.VK_UP) {
-             enemy.move();
+             enemy.move("up");
             player.move("up");
             System.out.println("up");
         }
         else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             player.move("down");
-            enemy.move();
+            enemy.move("down");
             System.out.println("down");
         }
     }

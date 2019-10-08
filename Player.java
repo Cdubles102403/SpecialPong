@@ -26,7 +26,7 @@ public class Player {
        this.x = 700;
        this.y = cHeight /2;
        this.width = 30;
-       this.height = 200;
+       this.height = 100;
        this.vy = 0;
        this.color = Color.YELLOW;
        this.bounds = new Rectangle(this.x, this.y, this.width, this.height); 
@@ -56,6 +56,10 @@ public class Player {
 
     public void setBounds(Rectangle bounds) {
         this.bounds = bounds;
+    }
+
+    public Rectangle getBounds() {
+        return bounds;
     }
 
     void stop() {

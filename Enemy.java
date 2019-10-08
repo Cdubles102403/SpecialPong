@@ -42,6 +42,10 @@ public class Enemy {
         this.x = x;
     }
 
+    public Rectangle getBounds() {
+        return bounds;
+    }
+    
     public void setY(int y) {
         this.y = y;
     }
@@ -72,12 +76,12 @@ public class Enemy {
        this.bounds = new Rectangle(this.x, this.y, this.width, this.height);
     }
     // movment
-    public void move(){
-         double move =  Math.random();
-    if(move > .5){
+     public void move(String direction){
+
+    if(direction.equals("up")){
            this.vy = -speed;
         }
-      else if(move < .5){
+      else if(direction.equals("down")){
            this.vy = speed;
         }
     }
