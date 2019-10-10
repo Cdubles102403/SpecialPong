@@ -54,7 +54,7 @@ public class World extends JPanel {
             ball.move();
             ball.sidebounce();
             scoreCheck();
-           // enemyMech();
+            // enemyMech();
             //bounce if ball touches paddles
             if(player.getBounds().intersects(ball.getBounds())){
             ball.bounce();
@@ -83,6 +83,12 @@ public class World extends JPanel {
             while(enemyPos < ballPos){
                 enemy.setY(1);
             }
+        }
+    }
+    //power up collision
+    public void puCollision(){
+        if(ball.getBounds().intersects(pu.getBounds())){
+            
         }
     }
     //ball score check

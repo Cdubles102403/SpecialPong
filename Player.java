@@ -21,7 +21,7 @@ public class Player {
    private final int speed = 5;
    private boolean alive;
    
-   public Player(int cWidth, int cHeight){
+    public Player(int cWidth, int cHeight){
        this.alive = true;
        this.x = 700;
        this.y = cHeight /2;
@@ -31,7 +31,7 @@ public class Player {
        this.color = Color.YELLOW;
        this.bounds = new Rectangle(this.x, this.y, this.width, this.height); 
     }
-      public void draw(Graphics g){
+    public void draw(Graphics g){
        g.setColor(this.color);
        Graphics2D g2d = (Graphics2D) g;
        g2d.fill(bounds);  
@@ -65,8 +65,8 @@ public class Player {
        this.y +=vy;
        this.bounds = new Rectangle(this.x, this.y, this.width, this.height);
     }
+    //movment
     public void move(String direction){
-
     if(direction.equals("up")){
            this.vy = -speed;
         }

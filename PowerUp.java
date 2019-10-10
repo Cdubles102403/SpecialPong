@@ -41,11 +41,15 @@ public class PowerUp {
        Graphics2D g2d = (Graphics2D) g;
        g2d.fillOval(x,y,width,width);  
     }
-       public void update(){
+    public void update(){
        this.bounds = new Rectangle(this.x, this.y, this.width, this.width);
     }
-       public void Picker(){
+       //pick power up
+    public void Picker(){
        double num = (int) (Math.random()*4);
-       
        }
+       
+    public Rectangle getBounds() {
+       return bounds;
+    }
 }

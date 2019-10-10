@@ -28,7 +28,7 @@ public class Enemy {
        this.color = Color.red;
        this.bounds = new Rectangle(this.x, this.y, this.width, this.height); 
     }
-      public void draw(Graphics g){
+    public void draw(Graphics g){
        g.setColor(this.color);
        Graphics2D g2d = (Graphics2D) g;
        g2d.fill(bounds);  
@@ -47,7 +47,7 @@ public class Enemy {
     }
 
     void stop() {
-       vy = 0;
+        vy = 0;
     }
 
     public int getY(){
@@ -67,13 +67,12 @@ public class Enemy {
        this.bounds = new Rectangle(this.x, this.y, this.width, this.height);
     }
     // movment
-     public void move(String direction){
-
-    if(direction.equals("up")){
-           this.vy = -speed;
-        }
-      else if(direction.equals("down")){
-           this.vy = speed;
-        }
+    public void move(String direction){
+        if(direction.equals("up")){
+               this.vy = -speed;
+            }
+          else if(direction.equals("down")){
+               this.vy = speed;
+            }
     }
 }
