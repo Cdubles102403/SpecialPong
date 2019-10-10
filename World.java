@@ -42,7 +42,7 @@ public class World extends JPanel {
         ball.draw(g);
         pu.draw(g);
     }
-
+    
     private class ScheduleTask extends TimerTask {
 
         @Override
@@ -52,44 +52,69 @@ public class World extends JPanel {
             player.update();
             pu.update();
             ball.move();
+           // enemyMech();
             //bounce if ball touches paddles
             if(player.getBounds().intersects(ball.getBounds())){
             ball.bounce();
+            player.increasePoints();
+            System.out.println("player score is" + player.getScore());
             }
             if(enemy.getBounds().intersects(ball.getBounds())){
             ball.bounce();
+            enemy.increasePoints();
+            System.out.println("player score is" + enemy.getScore());
+
             }
-            
             ball.update();
-            
-            
             }
     }
+    //enemy mechanics
+    //work in progress, not in use
+    public void enemyMech(){
+        int enemyPos = enemy.getY();
+        int ballPos = ball.getY();
+        if(enemyPos > ballPos){
+            while(enemyPos > ballPos){
+                enemy.setY(-1);
+            }
+        }
+        if(enemyPos < ballPos){
+            while(enemyPos < ballPos){
+                enemy.setY(1);
+            }
+        }
+    }
+    
 //keyboard events
     public void keyPressed(KeyEvent e) {
 
          if (e.getKeyCode() == KeyEvent.VK_UP) {
-             enemy.move("up");
             player.move("up");
-            System.out.println("up");
         }
         else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             player.move("down");
-            enemy.move("down");
-            System.out.println("down");
         }
+        //enemy keys (W and S)
+        if (e.getKeyCode() == KeyEvent.VK_W) {
+            enemy.move("up");
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_S) {
+            enemy.move("down");
+        } 
     }
 //release events
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             player.stop();
-            enemy.stop();
         }
-
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             player.stop();
+        }
+        if (e.getKeyCode() == KeyEvent.VK_W) {
             enemy.stop();
         }
-
+        else if (e.getKeyCode() == KeyEvent.VK_S) {
+            enemy.stop();
+        }
     }
 }

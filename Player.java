@@ -37,23 +37,10 @@ public class Player {
        g2d.fill(bounds);  
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+    public int getY() {
+        return this.y;
     }
     
-
-    public void setVy(int vy) {
-        this.vy = vy;
-    }
-
     public void setBounds(Rectangle bounds) {
         this.bounds = bounds;
     }

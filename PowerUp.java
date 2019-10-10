@@ -21,11 +21,11 @@ import java.awt.Rectangle;
  * 4.)player mini
  */
 public class PowerUp {
-     private int  width, x, y;
-   private Rectangle bounds;
-   private Color color;
-   private String[] powerups = new String[4];
-   public PowerUp(int cWidth, int cHeight){
+    private int  width, x, y;
+    private Rectangle bounds;
+    private Color color;
+    private String[] powerups = new String[4];
+    public PowerUp(int cWidth, int cHeight){
        this.x =(int) (Math.random() *470) + 50; 
        this.y = (int) (Math.random() *370) + 50;
        this.width = 30;
@@ -45,6 +45,7 @@ public class PowerUp {
        this.bounds = new Rectangle(this.x, this.y, this.width, this.width);
     }
        public void Picker(){
-           
+       double num = (int) (Math.random()*4);
+       
        }
 }

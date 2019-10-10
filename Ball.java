@@ -18,7 +18,7 @@ public class Ball {
        this.x = cWidth/2;
        this.y = cHeight /2;
        this.width = 30;
-       this.vy = 1;
+       this.vy = 5;
        this.vx = -7;
        this.color = Color.blue;
        this.bounds = new Rectangle(this.x, this.y, this.width, this.width); 
@@ -44,9 +44,6 @@ public class Ball {
     move();
     move();
     move();
-    
-    System.out.println("x: "+this.vx +" y: "+ this.vy);
-    
     }
         //movment
     public void move(){
@@ -56,6 +53,14 @@ public class Ball {
 
     public Rectangle getBounds() {
         return bounds;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
    
 }

@@ -34,33 +34,24 @@ public class Enemy {
        g2d.fill(bounds);  
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public Rectangle getBounds() {
         return bounds;
     }
-    
-    public void setY(int y) {
-        this.y = y;
+
+    public void setY(int num) {
+        this.y += num;
     }
     
-
-    public void setVy(int vy) {
-        this.vy = vy;
-    }
-
     public void setBounds(Rectangle bounds) {
         this.bounds = bounds;
     }
 
     void stop() {
        vy = 0;
+    }
+
+    public int getY(){
+        return this.y;
     }
     
     public void increasePoints(){
