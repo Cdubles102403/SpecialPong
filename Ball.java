@@ -10,13 +10,15 @@ import java.awt.Rectangle;
  * @author CSchafer
  */
 public class Ball {
-   private int width, x, y, vy,vx;
+   private int width, x, y, vy,vx,rx,ry;
    private Rectangle bounds;
    private Color color;
     
     public Ball(int cWidth, int cHeight){
        this.x = cWidth/2;
        this.y = cHeight /2;
+       this.rx = cWidth/2;
+       this.ry = cHeight /2;
        this.width = 30;
        this.vy = 2;
        this.vx = -1;
@@ -67,13 +69,18 @@ public class Ball {
     public int getY() {
         return y;
     }
-   public void sidebounce(){
-       if(this.y >=600-width){
+    public void sidebounce(){
+       if(this.y >= 600-width){
            this.vy = -vy;
        }
-       if(this.y <=0){
+       if(this.y <= 0){
            this.vy = -vy;
        }
-       
    }
+    public void reset(){
+       this.x = rx;
+       this.y = ry;
+       this.vy = 2;
+       this.vx = -1;
+    }
 }

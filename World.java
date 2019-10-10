@@ -53,16 +53,16 @@ public class World extends JPanel {
             pu.update();
             ball.move();
             ball.sidebounce();
+            scoreCheck();
            // enemyMech();
             //bounce if ball touches paddles
             if(player.getBounds().intersects(ball.getBounds())){
             ball.bounce();
-            player.increasePoints();
             System.out.println("player score is" + player.getScore());
             }
             if(enemy.getBounds().intersects(ball.getBounds())){
             ball.bounce();
-            enemy.increasePoints();
+            
             System.out.println("player score is" + enemy.getScore());
 
             }
@@ -85,7 +85,17 @@ public class World extends JPanel {
             }
         }
     }
-    
+    //ball score check
+       public void scoreCheck(){
+         if(ball.getX() >= 800){
+           enemy.increasePoints();
+           ball.reset();
+         }
+         if(ball.getX() <= 0){
+             player.increasePoints();
+             ball.reset();
+         }
+     }
 //keyboard events
     public void keyPressed(KeyEvent e) {
 
