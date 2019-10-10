@@ -18,8 +18,8 @@ public class Ball {
        this.x = cWidth/2;
        this.y = cHeight /2;
        this.width = 30;
-       this.vy = 5;
-       this.vx = -7;
+       this.vy = 2;
+       this.vx = -1;
        this.color = Color.blue;
        this.bounds = new Rectangle(this.x, this.y, this.width, this.width); 
     }
@@ -35,8 +35,13 @@ public class Ball {
        this.bounds = new Rectangle(this.x, this.y, this.width, this.width);
     }
     public void bounce(){
-    double ran1 = Math.random();
-    double ran2 = Math.random();
+    int ran1 =(int) (Math.random()*6+1);
+    if(this.vy > 0){
+        this.vy = ran1;
+    }
+    if(this.vy<0){
+        this.vy = -ran1;
+    }
     this.vx = -this.vx;
     this.vy = -this.vy;
     
@@ -62,5 +67,13 @@ public class Ball {
     public int getY() {
         return y;
     }
-   
+   public void sidebounce(){
+       if(this.y >=600-width){
+           this.vy = -vy;
+       }
+       if(this.y <=0){
+           this.vy = -vy;
+       }
+       
+   }
 }

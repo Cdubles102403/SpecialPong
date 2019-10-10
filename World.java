@@ -52,6 +52,7 @@ public class World extends JPanel {
             player.update();
             pu.update();
             ball.move();
+            ball.sidebounce();
            // enemyMech();
             //bounce if ball touches paddles
             if(player.getBounds().intersects(ball.getBounds())){
