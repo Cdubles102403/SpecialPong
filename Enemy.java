@@ -14,8 +14,10 @@ import java.awt.Rectangle;
 public class Enemy {
       private int height, width, x, y, vy, score;
    private Rectangle bounds;
+   private String pu;
+   private boolean isDouble;
    private Color color;
-   private final int speed = 5;
+   private int speed = 5;
    private boolean alive;
    
    public Enemy(int cWidth, int cHeight){
@@ -26,6 +28,7 @@ public class Enemy {
        this.height = 200;
        this.vy = 0;
        this.color = Color.red;
+       this.pu = "";
        this.bounds = new Rectangle(this.x, this.y, this.width, this.height); 
     }
     public void draw(Graphics g){
@@ -34,6 +37,10 @@ public class Enemy {
        g2d.fill(bounds);  
     }
 
+    public void setPU(String inp){
+       inp = this.pu;
+    }
+    
     public Rectangle getBounds() {
         return bounds;
     }
@@ -66,13 +73,30 @@ public class Enemy {
        this.y +=vy;
        this.bounds = new Rectangle(this.x, this.y, this.width, this.height);
     }
+    
+    //set power up
+    public void powerUpApply(){
+        if(this.pu.equals("speedUp")){
+            this.speed = 8;
+        }
+        if(this.pu.equals("freeze")){
+          stop();  
+        }
+        if(this.pu.equals("Double")){
+         this.isDouble = true;
+        }
+        if(this.pu.equals("mini")){
+         this.height = 50;   
+        }
+    }
+    
     // movment
     public void move(String direction){
         if(direction.equals("up")){
-               this.vy = -speed;
-            }
-          else if(direction.equals("down")){
-               this.vy = speed;
-            }
+            this.vy = -speed;
+        }
+        else if(direction.equals("down")){
+            this.vy = speed;
+        }
     }
 }

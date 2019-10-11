@@ -25,22 +25,26 @@ public class Ball {
        this.color = Color.blue;
        this.bounds = new Rectangle(this.x, this.y, this.width, this.width); 
     }
+    
     public void draw(Graphics g){
         g.setColor(this.color);
         Graphics2D g2d = (Graphics2D) g; 
         g2d.draw(bounds);
         g2d.fillOval(x,y,width,width);  
     }
+    
     public void update(){
         this.x += vx;
         this.y += vy;
         this.bounds = new Rectangle(this.x, this.y, this.width, this.width);
     }
+    
     public void bounce(){
-        int ran1 =(int) (Math.random()*6+1);
+        int ran1 =(int) (Math.random()*4+1);
         if(this.vy > 0){
         this.vy = ran1;
     }
+        
     if(this.vy<0){
         this.vy = -ran1;
     }
@@ -51,6 +55,7 @@ public class Ball {
         move();
         move();
         move();
+
     }
         //movment
     public void move(){
@@ -78,6 +83,7 @@ public class Ball {
            this.vy = -vy;
        }
    }
+    
     //reset ball pos and direction
     public void reset(){
        this.x = rx;

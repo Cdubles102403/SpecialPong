@@ -22,6 +22,7 @@ import java.awt.Rectangle;
  */
 public class PowerUp {
     private int  width, x, y;
+    private String current;
     private Rectangle bounds;
     private Color color;
     private String[] powerups = new String[4];
@@ -35,20 +36,44 @@ public class PowerUp {
        this.powerups[1] = "freeze";
        this.powerups[2] = "Double";
        this.powerups[3] = "mini";
+       this.current = "";
     }
+    
    public void draw(Graphics g){
        g.setColor(this.color);
        Graphics2D g2d = (Graphics2D) g;
        g2d.fillOval(x,y,width,width);  
     }
+   
     public void update(){
        this.bounds = new Rectangle(this.x, this.y, this.width, this.width);
     }
+    
+    public String getPU(){
+        return this.current;
+    }
+    
        //pick power up
-    public void Picker(){
+    public void picker(){
        double num = (int) (Math.random()*4);
+       if(num == 0){
+           this.current = powerups[0];
        }
-       
+       if(num == 1){
+           this.current = powerups[1];
+       }
+       if(num == 2){
+           this.current = powerups[2];
+       }
+       if(num ==3){
+           this.current = powerups[3];
+       }
+    }
+    public void reset(){
+       this.x =(int) (Math.random() *470) + 50; 
+       this.y = (int)(Math.random() *370) + 50;
+       picker();
+    }
     public Rectangle getBounds() {
        return bounds;
     }

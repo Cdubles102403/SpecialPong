@@ -18,6 +18,7 @@ import java.util.TimerTask;
  */
 public class World extends JPanel {
     private Player player;
+    private String lastTouch;
     private Enemy enemy;
     private Ball ball;
     private Timer timer;
@@ -31,6 +32,7 @@ public class World extends JPanel {
         enemy = new Enemy(800,600);
         ball = new Ball(800,600);
         pu = new PowerUp(800,600);
+        lastTouch = "";
     }
 
     @Override
@@ -44,7 +46,6 @@ public class World extends JPanel {
     }
     
     private class ScheduleTask extends TimerTask {
-
         @Override
         public void run() {
             repaint();
@@ -59,13 +60,14 @@ public class World extends JPanel {
             if(player.getBounds().intersects(ball.getBounds())){
             ball.bounce();
             System.out.println("player score is" + player.getScore());
+            lastTouch = "player";
             }
             if(enemy.getBounds().intersects(ball.getBounds())){
             ball.bounce();
-            
-            System.out.println("player score is" + enemy.getScore());
-
+            System.out.println("enemy score is" + enemy.getScore());
+            lastTouch = "enemy";
             }
+            puCollision();
             ball.update();
             }
     }
@@ -88,8 +90,14 @@ public class World extends JPanel {
     //power up collision
     public void puCollision(){
         if(ball.getBounds().intersects(pu.getBounds())){
-            
+        if(lastTouch.equals("player")){
+         player.setPU(pu.getPU());   
         }
+        else if(lastTouch.equals("enemy")){
+         enemy.setPU(pu.getPU()); 
+        }
+        pu.reset();
+      }
     }
     //ball score check
        public void scoreCheck(){
